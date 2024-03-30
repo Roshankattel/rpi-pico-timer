@@ -1,6 +1,8 @@
- Working Code - ui4.py
- Hardware: 
-  - rpi-pico-w
+Working Code - ui4.py
+Please see the schematics file for the Connection/Wiring
+Hardware: 
+  - RPI-pico-w
   - PIR sensor
-  - ILI9341 with Touch Capabilites
-NOTE:- Please see schematics file for Connection/Wiring 
+  - ILI9341 with Touch Capabilities
+ 
+
