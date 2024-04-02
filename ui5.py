@@ -46,8 +46,9 @@ def distance():
 
 
 def draw_screen_1():
-    global screen
+    global screen, activity
     screen = 1
+    activity = True
     display.draw_text(200, 280, "Please select option",
                       font, WHITE, 0, 1, 1)
     display.draw_text(150, 180, "Task",
@@ -120,19 +121,22 @@ def draw_screen_4():
         second = int(duration) * 60
     show_time(second)
     while second > 0:
-        dis = distance()
-        inch = dis / 74 / 2  # Time convert to the inch
-        if 0 < inch <= 2:
-            if not mobile_present:
-                display.draw_text8x8(10, 95, " Mobile Placed", GREEN, 0, 90)
+        if activity:
+            dis = distance()
+            inch = dis / 74 / 2  # Time convert to the inch
+            if 0 < inch <= 2:
+                if not mobile_present:
+                    display.draw_text8x8(10, 95, " Mobile Placed", GREEN, 0, 90)
+                show_time(second)
+                second -= 1
+                mobile_present = True
+            else:
+                if mobile_present:
+                    display.draw_text8x8(10, 95, "Mobile Removed", RED, 0, 90)
+                mobile_present = False
+        else:
             show_time(second)
             second -= 1
-            mobile_present = True
-        else:
-            if mobile_present:
-                display.draw_text8x8(10, 95, "Mobile Removed", RED, 0, 90)
-            mobile_present = False
-
         time.sleep(1)
 
     duration = ''
